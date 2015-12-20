@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 eventsApp.controller('EventController',
-    function EventController($scope) {
+    function EventController($scope, eventData) {
         $scope.snippet = '<span style="color: yellow !important;">hi there</span>';
         $scope.boolValue = true;
         $scope.mystyle = { color: 'yellow' };
@@ -9,7 +9,9 @@ eventsApp.controller('EventController',
         $scope.buttonDisabled = true;
         $scope.cbChecked = false;
         $scope.sortorder = 'name';
-        $scope.event = 
+        eventData.getEvent(function(event){
+            $scope.event = event;
+        });
 
         $scope.upVoteSession = function (session) {
             session.upVoteCount++;
